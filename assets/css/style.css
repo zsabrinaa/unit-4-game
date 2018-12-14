@@ -22,3 +22,7 @@ body {
     text-align: center;
     color: #cc5500;
 }
+.float {
+    position: absolute;
+    float: left
+}

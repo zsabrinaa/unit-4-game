@@ -7,6 +7,7 @@ $(document).ready(function () {
     var mushRed = Math.floor((Math.random() * 5 + 2));
     var targetNum = (mushBlue + mushGreen + mushRed + mushYellow) * 3;
     var userScore = 0;
+    var audio = new Audio ('assets/sounds/mushSound.mp3');
     $("#user-score").text(userScore);
     $("#random-number").text(targetNum);
     function reset() {
@@ -34,24 +35,28 @@ $(document).ready(function () {
     }
     $("#mushroom-green").on("click", function () {
         console.log("im here");
+        audio.play();
         userScore += mushGreen;
         $("#user-score").text(userScore);
         checkWins();
     })
     $("#mushroom-blue").on("click", function () {
         console.log("im here");
+        audio.play();
         userScore += mushBlue;
         $("#user-score").text(userScore);
         checkWins();
     })
     $("#mushroom-red").on("click", function () {
         console.log("im here");
+        audio.play();
         userScore += mushRed;
         $("#user-score").text(userScore);
         checkWins();
     })
     $("#mushroom-yellow").on("click", function () {
         console.log("im here");
+        audio.play();
         userScore += mushYellow;
         $("#user-score").text(userScore);
         checkWins();
