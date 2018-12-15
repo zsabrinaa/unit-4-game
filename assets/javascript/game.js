@@ -34,14 +34,17 @@ $(document).ready(function () {
         }
     }
     $("#mushroom-green").on("click", function () {
-        console.log("im here");
+        console.log("im here!");
+        audio.currentTime = 0;
         audio.play();
+        console.log(audio);
         userScore += mushGreen;
         $("#user-score").text(userScore);
         checkWins();
     })
     $("#mushroom-blue").on("click", function () {
         console.log("im here");
+        audio.currentTime = 0;
         audio.play();
         userScore += mushBlue;
         $("#user-score").text(userScore);
@@ -49,6 +52,7 @@ $(document).ready(function () {
     })
     $("#mushroom-red").on("click", function () {
         console.log("im here");
+        audio.currentTime = 0;
         audio.play();
         userScore += mushRed;
         $("#user-score").text(userScore);
@@ -56,6 +60,7 @@ $(document).ready(function () {
     })
     $("#mushroom-yellow").on("click", function () {
         console.log("im here");
+        audio.currentTime = 0;
         audio.play();
         userScore += mushYellow;
         $("#user-score").text(userScore);
