@@ -8,6 +8,8 @@ $(document).ready(function () {
     var targetNum = (mushBlue + mushGreen + mushRed + mushYellow) * 3;
     var userScore = 0;
     var audio = new Audio ('assets/sounds/mushSound.mp3');
+    var winsSound = new Audio ('assets/sounds/win.mp3');
+    var loseSound = new Audio ('assets/sounds/lose.mp3');
     $("#user-score").text(userScore);
     $("#random-number").text(targetNum);
     function reset() {
@@ -24,6 +26,8 @@ $(document).ready(function () {
     function checkWins() {
         if (targetNum === userScore) {
             wins++;
+            winsSound.play();
+            // winsSound.volume = 2.0;
             $("#wins-count").text("Wins:" + wins);
             reset();
         }
@@ -31,6 +35,9 @@ $(document).ready(function () {
             losses++;
             $("#losses-count").text("Losses:" + losses);
             reset();
+            loseSound.play();
+            
+            
         }
     }
     $("#mushroom-green").on("click", function () {
