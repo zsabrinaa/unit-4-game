@@ -7,9 +7,10 @@ $(document).ready(function () {
     var mushRed = Math.floor((Math.random() * 5 + 2));
     var targetNum = (mushBlue + mushGreen + mushRed + mushYellow) * 3;
     var userScore = 0;
-    var audio = new Audio ('assets/sounds/mushSound.mp3');
-    var winsSound = new Audio ('assets/sounds/win.mp3');
-    var loseSound = new Audio ('assets/sounds/lose.mp3');
+    var audio = new Audio('assets/sounds/mushSound.mp3');
+    var winsSound = new Audio('assets/sounds/win.mp3');
+    var loseSound = new Audio('assets/sounds/lose.mp3');
+    var mute = false;
     $("#user-score").text(userScore);
     $("#random-number").text(targetNum);
     function reset() {
@@ -26,24 +27,39 @@ $(document).ready(function () {
     function checkWins() {
         if (targetNum === userScore) {
             wins++;
-            winsSound.play();
-            // winsSound.volume = 2.0;
+            if (mute == false) {
+                winsSound.play();
+            }
             $("#wins-count").text("Wins:" + wins);
             reset();
         }
         else if (userScore >= targetNum) {
             losses++;
+            if (mute == false) {
+                loseSound.play();
+            }
             $("#losses-count").text("Losses:" + losses);
             reset();
-            loseSound.play();
-            
-            
+
         }
     }
+    $("#mute-button").on("click", function () {
+        if (mute == false) {
+            mute = true;
+            $("#mute-button").text("Unmute");
+        }else {
+            mute = false;
+            $("#mute-button").text("Mute");
+        }
+
+    }
+    )
     $("#mushroom-green").on("click", function () {
         console.log("im here!");
         audio.currentTime = 0;
-        audio.play();
+        if (mute == false) {
+            audio.play();
+        }
         console.log(audio);
         userScore += mushGreen;
         $("#user-score").text(userScore);
@@ -52,7 +68,9 @@ $(document).ready(function () {
     $("#mushroom-blue").on("click", function () {
         console.log("im here");
         audio.currentTime = 0;
-        audio.play();
+        if (mute == false) {
+            audio.play();
+        }
         userScore += mushBlue;
         $("#user-score").text(userScore);
         checkWins();
@@ -60,7 +78,9 @@ $(document).ready(function () {
     $("#mushroom-red").on("click", function () {
         console.log("im here");
         audio.currentTime = 0;
-        audio.play();
+        if (mute == false) {
+            audio.play();
+        }
         userScore += mushRed;
         $("#user-score").text(userScore);
         checkWins();
@@ -68,9 +88,13 @@ $(document).ready(function () {
     $("#mushroom-yellow").on("click", function () {
         console.log("im here");
         audio.currentTime = 0;
-        audio.play();
+        if (mute == false) {
+            audio.play();
+        }
         userScore += mushYellow;
         $("#user-score").text(userScore);
         checkWins();
     })
+
+
 })
